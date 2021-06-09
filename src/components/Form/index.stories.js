@@ -1,18 +1,15 @@
-import React from 'react'
-import { shallow } from 'enzyme'
-import Transaction from '.'
+import React from 'react';
 
-describe('Transaction component', () => {
-    it('should show transaction', () => {
-        const props = {
-            transaction: {
-                value: 23,
-                comment: 'test',
-                date: '01.01.2020'
-            }
-        }
-        const sut = shallow(<Transaction {...props} />);
+import Form from '.';
 
-        expect(sut).toMatchSnapshot()
-    })
-})
+export default {
+  title: 'Example/Form',
+  component: Form,
+};
+
+const Template = (args) => <Form {...args} />;
+
+export const Income = Template.bind({});
+Income.args = {
+  onChange: () => {}
+};
