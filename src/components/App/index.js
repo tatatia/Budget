@@ -1,15 +1,16 @@
-import React from 'react';
+import React from 'react'
 import {
     BrowserRouter as Router,
     Switch,
     Route
-  } from "react-router-dom";
+} from "react-router-dom"
 
-import { open } from '../../utils/indexdb';
-import Home from '../Home';
-import About from '../About';
-import Statistics from '../Statistics';
-import Header from '../Header';
+import { open } from '../../utils/indexdb'
+import Home from '../Home'
+import About from '../About'
+import Statistics from '../Statistics'
+import Header from '../Header'
+import CurrencyContext from '../../providers/context'
 
 import { Wrapper, GlobalStyle } from './styles'
 
@@ -38,12 +39,13 @@ class App extends React.Component {
         };
 
         return (
-            <Router>
-                <Wrapper>
-                    <GlobalStyle/>
-                    
-                        <Header/>
-    
+            <CurrencyContext.Provider value={{currency: 'UAN'}}>
+                <Router>
+                    <Wrapper>
+                        <GlobalStyle />
+
+                        <Header />
+
                         <Switch>
                             <Route path="/about">
                                 <About />
@@ -54,12 +56,13 @@ class App extends React.Component {
                             <Route path="/">
                                 <Home />
                             </Route>
-                            </Switch>
-                </Wrapper>
-            </Router>
+                        </Switch>
+                    </Wrapper>
+                </Router>
+            </CurrencyContext.Provider>
         )
     }
-    
+
 }
 
-  export default App;
+export default App;
